@@ -98,6 +98,12 @@
     if (c.indexOf('farm') >= 0 || c.indexOf('leveraged') >= 0) return 'Open a $' + capital + ' leveraged farming position on ' + name + ' on ' + chain + ' at low leverage and monitor it daily.';
     if (c.indexOf('index') >= 0) return 'Buy $' + capital + " of " + name + "'s index token on " + chain + ' and hold it.';
     if (c.indexOf('privacy') >= 0) return 'Make a $' + capital + ' private deposit through ' + name + ' on ' + chain + ' and keep the withdrawal note safe.';
+    if (c.indexOf('payments') >= 0) return 'Open a $' + capital + ' payment channel through ' + name + ' on ' + chain + ' with BTC and keep the channel open for routing.';
+    if (c.indexOf('anchor btc') >= 0 || c.indexOf('decentralized btc') >= 0) return 'Lock $' + capital + ' of BTC through ' + name + ' on ' + chain + ' and keep the receipt token.';
+    if (c.indexOf('cedefi') >= 0) return 'Deposit $' + capital + ' of USDC into a ' + name + ' CeDeFi vault on ' + chain + ' and keep the vault shares.';
+    if (c.indexOf('governance incentives') >= 0) return 'Deposit $' + capital + ' of USDC into ' + name + ' on ' + chain + ', keep the position open, and vote in its governance with the position.';
+    if (c.indexOf('otc marketplace') >= 0) return 'Fund $' + capital + ' and place one OTC trade on ' + name + ' on ' + chain + ', then settle it.';
+    if (c.indexOf('crypto card') >= 0) return 'Load $' + capital + ' onto a ' + name + ' card on ' + chain + ' and spend it on an everyday purchase.';
     if (c === 'chain') return 'Bridge $' + capital + ' of USDC to ' + name + "'s chain and use one of its native apps each week.";
     return 'Deposit $' + capital + ' of USDC into ' + name + ' on ' + chain + ' and keep the position open.';
   }
@@ -337,7 +343,7 @@
 
   function modelPanel() {
     var m = DATA.model;
-    var multRows = DATA.category_multiples.slice(0, 8).map(function (c) {
+    var multRows = DATA.category_multiples.map(function (c) {
       return el('tr', null,
         el('td', { text: c.category }),
         el('td', { class: 'num', text: fmtMult(c.multiple) + 'x' }),
